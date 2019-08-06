@@ -1,6 +1,6 @@
 # go-digestfs
 
-Package **digestfs** provides of **virtual file system** (**VFS**), and **content-addressable storage** (**CAS**).
+Package **digestfs** provides a **content-addressable file system**, **content-addressable storage** (**CAS**), and **virtual file system** (**VFS**).
 
 ## Documention
 
@@ -10,7 +10,7 @@ Online documentation, which includes examples, can be found at: http://godoc.org
 
 ## Content Addressing
 
-**Content-addressable storage** (**CAS**) may be used with **content addressing**.
+A **content-addressable file system**, or **content-addressable storage** (**CAS**) may be used with **content addressing**.
 
 Some examples of **content addressing** include:
 
