@@ -6,12 +6,12 @@ import (
 	"sync"
 )
 
-type Mounted struct {
+type MountPoint struct {
 	mutex sync.RWMutex
 	mountpoint digestfs_driver.MountPoint
 }
 
-func (dest *Mounted) Mount(fstype string, src string, params ...interface{}) error {
+func (dest *MountPoint) Mount(fstype string, src string, params ...interface{}) error {
 	if nil == dest {
 		return errNilDestination
 	}
@@ -44,7 +44,7 @@ func (dest *Mounted) Mount(fstype string, src string, params ...interface{}) err
 	return nil
 }
 
-func (receiver *Mounted) Open(algorithm string, digest string) (Content, error) {
+func (receiver *MountPoint) Open(algorithm string, digest string) (Content, error) {
 	if nil == receiver {
 		return nil, errNilReceiver
 	}
@@ -60,7 +60,7 @@ func (receiver *Mounted) Open(algorithm string, digest string) (Content, error) 
 	return mountpoint.Open(algorithm, digest)
 }
 
-func (dest *Mounted) Unmount() error {
+func (dest *MountPoint) Unmount() error {
 	if nil == dest {
 		return errNilDestination
 	}
