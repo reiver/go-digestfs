@@ -8,6 +8,6 @@ var (
 	errMounted        = errors.New("digestfs: Mounted")
 	errNilDestination = errors.New("digestfs: Nil Destination")
 	errNilMounter     = errors.New("digestfs: Nil Mounter")
-	errNilOpener      = errors.New("digestfs: Nil Opener")
+	errNilMountPoint  = errors.New("digestfs: Nil Mount Point")
 	errNilReceiver    = errors.New("digestfs: Nil Receiver")
 )

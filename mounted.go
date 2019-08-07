@@ -8,10 +8,10 @@ import (
 
 type Mounted struct {
 	mutex sync.RWMutex
-	opener digestfs_driver.Opener
+	mountpoint digestfs_driver.MountPoint
 }
 
-func Mount(dest *Mounted, fstype string, src string, params ...interface{}) error {
+func (dest *Mounted) Mount(fstype string, src string, params ...interface{}) error {
 	if nil == dest {
 		return errNilDestination
 	}
@@ -19,7 +19,7 @@ func Mount(dest *Mounted, fstype string, src string, params ...interface{}) erro
 	dest.mutex.Lock()
 	defer dest.mutex.Unlock()
 
-	if nil != dest.opener {
+	if nil != dest.mountpoint {
 		return errMounted
 	}
 
@@ -31,15 +31,15 @@ func Mount(dest *Mounted, fstype string, src string, params ...interface{}) erro
 		return errNilMounter
 	}
 
-	opener, err := mounter.Mount(src, params...)
+	mountpoint, err := mounter.Mount(src, params...)
 	if nil != err {
 		return err
 	}
-	if nil == opener {
-		return errNilOpener
+	if nil == mountpoint {
+		return errNilMountPoint
 	}
 
-	dest.opener = opener
+	dest.mountpoint = mountpoint
 
 	return nil
 }
@@ -52,11 +52,31 @@ func (receiver *Mounted) Open(algorithm string, digest string) (Content, error) 
 	receiver.mutex.RLock()
 	defer receiver.mutex.RUnlock()
 
-	opener := receiver.opener
-
-	if nil == opener {
-		return nil, errNilOpener
+	mountpoint := receiver.mountpoint
+	if nil == mountpoint {
+		return nil, errNilMountPoint
 	}
 
-	return opener.Open(algorithm, digest)
+	return mountpoint.Open(algorithm, digest)
+}
+
+func (dest *Mounted) Unmount() error {
+	if nil == dest {
+		return errNilDestination
+	}
+
+	dest.mutex.Lock()
+	defer dest.mutex.Unlock()
+
+	if nil != dest.mountpoint {
+		return nil
+	}
+
+	if err := dest.mountpoint.Unmount(); nil != err {
+		return err
+	}
+
+	dest.mountpoint = nil
+
+	return nil
 }
