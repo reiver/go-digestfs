@@ -1,5 +1,6 @@
 package digestfs_driver
 
-type Opener interface {
+type MountPoint interface {
 	Open(algorithm string, digest string) (Content, error)
+	Unmount() error
 }
