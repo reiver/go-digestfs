@@ -45,5 +45,5 @@ type ContentNotFound interface {
 //	}
 type MounterNotFound interface {
 	error
-	MounterNotFound() (algorithm string, digest string)
+	MounterNotFound() string
 }
