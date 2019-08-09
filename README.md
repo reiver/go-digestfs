@@ -1,12 +1,24 @@
 # go-digestfs
 
-Package **digestfs** provides a **content-addressable file system**, **content-addressable storage** (**CAS**), and **virtual file system** (**VFS**).
+Package **digestfs provides** a **content-addressable file system**, and **virtual file system** (**VFS**) 
+by providing a common interface to one or more **content-addressable storage** (**CAS**).
 
 ## Documention
 
 Online documentation, which includes examples, can be found at: http://godoc.org/github.com/reiver/go-digestfs
 
 [![GoDoc](https://godoc.org/github.com/reiver/go-digestfs?status.svg)](https://godoc.org/github.com/reiver/go-digestfs)
+
+## Example
+
+Here is an example of how to use an already mounted `digestfs.MountPoint` to get content:
+```go
+var mountpoint digestfs.MountPoint
+
+// ...
+
+content, err := mountpoint.Open("SHA-256", "c0535e4be2b79ffd93291305436bf889314e4a3faec05ecffcbb7df31ad9e51a")
+```
 
 ## Content Addressing
 
