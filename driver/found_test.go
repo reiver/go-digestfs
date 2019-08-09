@@ -15,9 +15,9 @@ func TestInternalFoundAsError(t *testing.T) {
 
 func TestInternalFoundAsFound(t *testing.T) {
 
-	var found Found = internalFound{} // THIS IS WHAT ACTUALLY MATTERS!
+	var complainer Found = internalFound{} // THIS IS WHAT ACTUALLY MATTERS!
 
-	if nil == found {
+	if nil == complainer {
 		t.Error("This should never happen.")
 	}
 }

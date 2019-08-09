@@ -15,9 +15,9 @@ func TestInternalUnsupportedAlgorithmAsError(t *testing.T) {
 
 func TestInternalUnsupportedAlgorithmAsUnsupportedAlgorithm(t *testing.T) {
 
-	var notfound UnsupportedAlgorithm = internalUnsupportedAlgorithm{} // THIS IS WHAT ACTUALLY MATTERS!
+	var complainer UnsupportedAlgorithm = internalUnsupportedAlgorithm{} // THIS IS WHAT ACTUALLY MATTERS!
 
-	if nil == notfound {
+	if nil == complainer {
 		t.Error("This should never happen.")
 	}
 }
