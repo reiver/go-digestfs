@@ -9,4 +9,5 @@ type Content interface {
 	io.ReaderAt
 
 	Len() int
+	Location() string
 }

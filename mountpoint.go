@@ -60,6 +60,23 @@ func (receiver *MountPoint) Open(algorithm string, digest string) (Content, erro
 	return mountpoint.Open(algorithm, digest)
 }
 
+
+func (receiver *MountPoint) OpenLocation(location string) (Content, error) {
+	if nil == receiver {
+		return nil, errNilReceiver
+	}
+
+	receiver.mutex.RLock()
+	defer receiver.mutex.RUnlock()
+
+	mountpoint := receiver.mountpoint
+	if nil == mountpoint {
+		return nil, errNilMountPoint
+	}
+
+	return mountpoint.OpenLocation(location)
+}
+
 func (dest *MountPoint) Unmount() error {
 	if nil == dest {
 		return errNilDestination
