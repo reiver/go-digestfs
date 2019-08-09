@@ -37,7 +37,7 @@ func TestInternalRegistrar(t *testing.T) {
 			continue
 		}
 
-		if _, casted := err.(NotFound); !casted {
+		if _, casted := err.(MounterNotFound); !casted {
 			t.Errorf("For test #%d, expected ‘not found’ error, but did not actually get it: (%T) %q", testNumber, err, err)
 			t.Logf("Name: %q", name)
 			continue
@@ -88,7 +88,7 @@ func TestInternalRegistrar(t *testing.T) {
 				continue
 			}
 
-			if _, casted := err.(NotFound); !casted {
+			if _, casted := err.(MounterNotFound); !casted {
 				t.Errorf("For test #%d, expected ‘not found’ error, but did not actually get it: (%T) %q", testNumber, err, err)
 				t.Logf("Name: %q", name)
 				continue

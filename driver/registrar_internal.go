@@ -19,12 +19,12 @@ func (receiver *internalRegistrar) Fetch(name string) (Mounter, error) {
 
 	mounters := receiver.mounters
 	if nil == mounters {
-		return nil, errNotFound(name)
+		return nil, errMounterNotFound(name)
 	}
 
 	mounter, found := mounters[name]
 	if !found {
-		return nil, errNotFound(name)
+		return nil, errMounterNotFound(name)
 	}
 	if nil == mounter {
 		return nil, errNilMounter
