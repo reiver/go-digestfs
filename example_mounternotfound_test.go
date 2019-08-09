@@ -13,12 +13,18 @@ func ExampleMounterNotFound() {
 	err := mountpoint.Mount("faux", "/path/to/stuff")
 
 	if nil != err {
-		fmt.Print(err)
-		return
+		switch casted := err.(type) {
+		case digestfs.MounterNotFound:
+			fmt.Printf("mounter not found for fstype = %q", casted.MounterNotFound())
+			return
+		default:
+			fmt.Print(err)
+			return
+		}
 	}
 
 	fmt.Printf("MOUNTED!")
 
 	// Output:
-	// digestfs: Not Found: mounter name="faux"
+	// mounter not found for fstype = "faux"
 }
