@@ -51,7 +51,7 @@ func (receiver *internalRegistrar) Register(mounter Mounter, name string) error 
 
 	_, found := receiver.mounters[name]
 	if found {
-		return errFound(name)
+		return errMounterFound(name)
 	}
 
 	receiver.mounters[name]  = mounter
