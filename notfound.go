@@ -1,9 +1,5 @@
 package digestfs
 
-import (
-	"fmt"
-)
-
 // ContentNotFound may be returned by MountPoint.Open(), and MountPoint.OpenLocation().
 //
 // Example
