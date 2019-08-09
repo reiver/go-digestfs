@@ -45,7 +45,7 @@ func TestInternalRegistrar(t *testing.T) {
 	}
 
 	for testNumber, name := range names {
-		var mounter Mounter = MounterFunc(func(src string, params ...interface{}) (MountPoint, error){
+		var mounter Mounter = MounterFunc(func(params ...interface{}) (MountPoint, error){
 			return nil, nil
 		})
 

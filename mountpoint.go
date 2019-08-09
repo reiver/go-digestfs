@@ -11,7 +11,7 @@ type MountPoint struct {
 	mountpoint digestfs_driver.MountPoint
 }
 
-func (dest *MountPoint) Mount(fstype string, src string, params ...interface{}) error {
+func (dest *MountPoint) Mount(fstype string, params ...interface{}) error {
 	if nil == dest {
 		return errNilDestination
 	}
@@ -31,7 +31,7 @@ func (dest *MountPoint) Mount(fstype string, src string, params ...interface{}) 
 		return errNilMounter
 	}
 
-	mountpoint, err := mounter.Mount(src, params...)
+	mountpoint, err := mounter.Mount(params...)
 	if nil != err {
 		return err
 	}

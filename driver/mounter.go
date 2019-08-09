@@ -1,5 +1,5 @@
 package digestfs_driver
 
 type Mounter interface {
-	Mount(src string, params ...interface{}) (MountPoint, error)
+	Mount(params ...interface{}) (MountPoint, error)
 }
