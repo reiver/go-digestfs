@@ -19,6 +19,11 @@ Here is an example of how to use an already mounted digestfs.MountPoint to get c
 	}
 	defer content.Close()
 
+Note that if you had the key encoded as hexadecimal, then you could decode it using the Go built-in package "encoding/hex".
+As in:
+
+	key, err := hex.DecodeString("c0535e4be2b79ffd93291305436bf889314e4a3faec05ecffcbb7df31ad9e51a")
+
 Here, ‘content’ would give you access to the data on the content mostly via an io.ReaderAt interface.
 For example:
 
