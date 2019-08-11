@@ -38,7 +38,7 @@ For example:
 Alternatively, if you want to use the io.Reader interface, you can upgrade ‘content’ from an io.ReaderAt to an io.Reader by using an io.SectionReader.
 For example:
 
-	r := io.NewSectionReader(content, 0, content.Len())
+	r := io.NewSectionReader(content, 0, int64(content.Len()))
 	
 	// ...
 	

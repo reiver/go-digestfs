@@ -30,7 +30,7 @@ import (
 //
 // For example:
 //
-//	r := io.NewSectionReader(content, 0, content.Len())
+//	r := io.NewSectionReader(content, 0, int64(content.Len()))
 type Content interface {
 	io.Closer
 	io.ReaderAt
