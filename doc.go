@@ -1,5 +1,5 @@
 /*
-Package digestfs provides a content-addressable file system, and virtual file system (VFS)
+Package digestfs provides a content-addressable virtual file system (VFS)
 by providing a common interface to one or more content-addressable storage (CAS).
 
 Example
