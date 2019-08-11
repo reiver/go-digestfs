@@ -11,18 +11,18 @@ Here is an example of how to use an already mounted digestfs.MountPoint to get c
 	// ...
 	
 	// c0535e4be2b79ffd93291305436bf889314e4a3faec05ecffcbb7df31ad9e51a
-	var key [64]byte = [64]byte{0xc0, 0x53, 0x5e, 0x4b, 0xe2, 0xb7, 0x9f, 0xfd, 0x93, 0x29, 0x13, 0x05, 0x43, 0x6b, 0xf8, 0x89, 0x31, 0x4e, 0x4a, 0x3f, 0xae, 0xc0, 0x5e, 0xcf, 0xfc, 0xbb, 0x7d, 0xf3, 0x1a, 0xd9, 0xe5, 0x1a}
+	var digest [64]byte = [64]byte{0xc0, 0x53, 0x5e, 0x4b, 0xe2, 0xb7, 0x9f, 0xfd, 0x93, 0x29, 0x13, 0x05, 0x43, 0x6b, 0xf8, 0x89, 0x31, 0x4e, 0x4a, 0x3f, 0xae, 0xc0, 0x5e, 0xcf, 0xfc, 0xbb, 0x7d, 0xf3, 0x1a, 0xd9, 0xe5, 0x1a}
 	
-	content, err := mountpoint.Open("SHA-256", key[:])
+	content, err := mountpoint.Open("SHA-256", digest[:])
 	if nil != err {
 		return err
 	}
 	defer content.Close()
 
-Note that if you had the key encoded as hexadecimal, then you could decode it using the Go built-in package "encoding/hex".
+Note that if you had the digest encoded as hexadecimal, then you could decode it using the Go built-in package "encoding/hex".
 As in:
 
-	key, err := hex.DecodeString("c0535e4be2b79ffd93291305436bf889314e4a3faec05ecffcbb7df31ad9e51a")
+	digest, err := hex.DecodeString("c0535e4be2b79ffd93291305436bf889314e4a3faec05ecffcbb7df31ad9e51a")
 
 Here, ‘content’ would give you access to the data on the content mostly via an io.ReaderAt interface.
 For example:
