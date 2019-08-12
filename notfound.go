@@ -22,7 +22,7 @@ package digestfs
 //	}
 type ContentNotFound interface {
 	error
-	ContentNotFound() (algorithm string, digest []byte)
+	ContentNotFound() (algorithm string, digest string)
 }
 
 // MounterNotFound may be returned by Mounter.Mount().
