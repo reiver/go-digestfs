@@ -44,6 +44,22 @@ func (dest *MountPoint) Mount(fstype string, params ...interface{}) error {
 	return nil
 }
 
+func (receiver *MountPoint) Create(content []byte) (algorithm string, digest string, err error) {
+	if nil == receiver {
+		return "", "", errNilReceiver
+	}
+
+	receiver.mutex.Lock()
+	defer receiver.mutex.Unlock()
+
+	mountpoint := receiver.mountpoint
+	if nil == mountpoint {
+		return "", "", errNilMountPoint
+	}
+
+	return mountpoint.Create(content)
+}
+
 func (receiver *MountPoint) Open(algorithm string, digest string) (Content, error) {
 	if nil == receiver {
 		return nil, errNilReceiver
