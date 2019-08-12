@@ -13,9 +13,19 @@ Online documentation, which includes examples, can be found at: http://godoc.org
 
 Here is an example of how to use an already mounted `digestfs.MountPoint` to get content:
 ```go
+var mem memdigest.SHA1
+
+binaryDigest, err := mem.Store([]byte("The request has been accepted for processing, but the processing has not been completed."))
+
+binaryDigest, err := mem.Store([]byte("The server has fulfilled the request but does not need to return an entity-body, and might want to return updated metainformation."))
+
+binaryDigest, err := mem.Store([]byte("The server encountered an unexpected condition which prevented it from fulfilling the request."))
+
+// ...
+
 var mountpoint digestfs.MountPoint
 
-err := mountpoint.Mount("memdigest.SHA1")
+err := mountpoint.Mount("memdigest.SHA1", &mem)
 
 // ...
 
