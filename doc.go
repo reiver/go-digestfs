@@ -6,23 +6,7 @@ Example
 
 Here is an example of how to use an already mounted digestfs.MountPoint to get content:
 
-	var mem memdigest.SHA1
-
-	binaryDigest, err := mem.Store([]byte("The request has been accepted for processing, but the processing has not been completed."))
-	
-	binaryDigest, err := mem.Store([]byte("The server has fulfilled the request but does not need to return an entity-body, and might want to return updated metainformation."))
-	
-	binaryDigest, err := mem.Store([]byte("The server encountered an unexpected condition which prevented it from fulfilling the request."))
-
-	// ...
-
-	var mountpoint digestfs.MountPoint
-	
-	err := mountpoint.Mount("memdigest.SHA1", &mem)
-	
-	// ...
-	
-	content, err := mountpoint.Open("SHA-256", "c0535e4be2b79ffd93291305436bf889314e4a3faec05ecffcbb7df31ad9e51a")
+	content, err := mountpoint.Open("SHA-256.hexadecimal", "c0535e4be2b79ffd93291305436bf889314e4a3faec05ecffcbb7df31ad9e51a")
 	if nil != err {
 		return err
 	}
