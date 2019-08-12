@@ -70,3 +70,7 @@ Some examples of **content addressing** include:
 * [IETF RFC 2397: The "data" URL scheme](https://tools.ietf.org/html/rfc2397)
 
 * [Hash URI Specification](https://github.com/hash-uri/hash-uri)
+
+## See Also
+
+* https://godoc.org/github.com/reiver/go-memdigest
