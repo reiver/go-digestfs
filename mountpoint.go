@@ -44,7 +44,7 @@ func (dest *MountPoint) Mount(fstype string, params ...interface{}) error {
 	return nil
 }
 
-func (receiver *MountPoint) Open(algorithm string, digest []byte) (Content, error) {
+func (receiver *MountPoint) Open(algorithm string, digest string) (Content, error) {
 	if nil == receiver {
 		return nil, errNilReceiver
 	}
