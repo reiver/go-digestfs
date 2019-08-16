@@ -72,15 +72,4 @@ func (receiver internalBadLocation) Error() string {
 
 func (receiver internalBadLocation) BadLocation() string {
 	return receiver.location
-//
-//	func (receiver MyMountPoint) OpenLocation(location string) (digestfs_driver.Content, error) {
-//
-//		// ...
-//
-//		if locationIsBad {
-//			nil, return digestfs_driver.ErrBadLocation(location)
-//		}
-//
-//		// ...
-//	}
 }
