@@ -9,6 +9,20 @@ type internalStringContent struct {
 	closed bool
 }
 
+// StringContent is a helper function that MountPoints can use to create Content.
+//
+// For example:
+//
+//	func (receiver MyMountPoint) Open(algorithm string, digest string) (digestfs_driver.Content, error) {
+//		
+//		// ...
+//		
+//		var data string
+//		
+//		// ...
+//		
+//		return digestfs_driver.StringContent(data)
+//	}
 func StringContent(value string) Content {
 	return &internalStringContent{
 		value: value,
