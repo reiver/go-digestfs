@@ -19,5 +19,11 @@ To create a driver, do something like the following:
 			panic(err)
 		}
 	}
+
+Example Drivers
+
+For an example an example digestfs driver, see the source code of:
+https://github.com/reiver/go-memdigest
+
 */
 package digestfs_driver
