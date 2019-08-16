@@ -4,7 +4,7 @@ import (
 	"io"
 )
 
-// Content represents open content.
+// Content represents open content. It is a read-only interface to content.
 //
 // Content is returned by Open(), and OpenLocation().
 //
