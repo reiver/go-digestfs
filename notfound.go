@@ -10,7 +10,7 @@ package digestfs
 //	
 //	// ...
 //	
-//	content, err := mountpoint.Open("SHA-256", "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f")
+//	content, err := mountpoint.Open("SHA-256", "\x00\x00\x00\x00\x00\x19\xd6\x68\x9c\x08\x5a\xe1\x65\x83\x1e\x93\x4f\xf7\x63\xae\x46\xa2\xa6\xc1\x72\xb3\xf1\xb6\x0a\x8c\xe2\x6f")
 //	
 //	if nil != err {
 //		switch err.(type) {
@@ -33,8 +33,8 @@ type ContentNotFound interface {
 //
 //	var mountpoint digestfs.MountPoint
 //	
-//	err := mountpoint.Mount("git", "/home/me/workspaces/project")
-//
+//	err := mountpoint.Mount("git", "/home/joeblow/workspaces/myproject")
+//	
 //	if nil != err {
 //		switch err.(type) {
 //		case digestfs.MounterNotFound:
