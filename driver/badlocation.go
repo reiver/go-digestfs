@@ -41,6 +41,19 @@ type BadLocation interface {
 }
 
 // ErrBadLocation returns a BadLocation error.
+//
+// Here is how one might use this function:
+//
+//	func (receiver MyMountPoint) OpenLocation(location string) (digestfs_driver.Content, error) {
+//
+//		// ...
+//
+//		if locationIsBad {
+//			nil, return digestfs_driver.ErrBadLocation(location)
+//		}
+//
+//		// ...
+//	}
 func ErrBadLocation(location string) error {
 	var e BadLocation = &internalBadLocation{
 		location: location,
@@ -59,4 +72,15 @@ func (receiver internalBadLocation) Error() string {
 
 func (receiver internalBadLocation) BadLocation() string {
 	return receiver.location
+//
+//	func (receiver MyMountPoint) OpenLocation(location string) (digestfs_driver.Content, error) {
+//
+//		// ...
+//
+//		if locationIsBad {
+//			nil, return digestfs_driver.ErrBadLocation(location)
+//		}
+//
+//		// ...
+//	}
 }
