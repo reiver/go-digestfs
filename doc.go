@@ -2,7 +2,7 @@
 Package digestfs provides a content-addressable virtual file system (VFS)
 by providing a common interface to one or more content-addressable storage (CAS).
 
-Example
+Example Opening
 
 Here is an example of how to use an already mounted digestfs.MountPoint to get content:
 
@@ -42,6 +42,18 @@ For example:
 	// ...
 	
 	contentBytes, err := ioutil.RealAll(r)
+
+Example Mounting
+
+How you create a digestfs.MountPoint depends on which MountPoint you use.
+
+But mounting looks something like:
+
+	var mountpoint digestfs.MountPoint
+	
+	err := mountpoint.Mount("git", "/home/joeblow/workspaces/myproject")
+
+Content-Addressable Storages
 
 Some content-addressable storages (CAS) that can be used with digestfs include:
 
