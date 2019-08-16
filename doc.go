@@ -41,7 +41,7 @@ For example:
 	
 	// ...
 	
-	contentBytes, err := ioutil.RealAll(r)
+	contentBytes, err := ioutil.ReadAll(r)
 
 Example Mounting
 
