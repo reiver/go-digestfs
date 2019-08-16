@@ -5,7 +5,10 @@ import (
 )
 
 // BadLocation is an error that should be returned by a MountPoint's OpenLocation() method when the
-// value of the ‘location’ parameter passed to OpenLocation(location string) is
+// value of the ‘location’ parameter passed to OpenLocation(location string) is bad.
+//
+// (You the programmer will decide when the value of the ‘location’ parameter passed to
+// OpenLocation(location string) is bad.)
 //
 // You can create this kind of error by calling the ErrBadLocation() function.
 // For example:
@@ -26,12 +29,16 @@ import (
 // The BadLocation Error means that the format of the value of ‘location’ is bad.
 // Ex: it is not understandable by your code.
 //
-// So, for example, if you decided that you driver will accept locations in this kind of format:
+// So, for example, if you decided that your driver will accept locations in this kind of format:
 //
 //	"@->/path/on/the/file/system/to/the/content"
+//	"@->/home/jowblow/photos/1996/vacation-vancouver/.ii/content/00000000001kdxxHkC0H5AE1x5Hm1Ekm4ffVxmAE4xA2AxC1V2bmf1bx0AHCE2xf"
 //
 // Then if OpenLocation() received something that didn't begin with a "@->" then it would return
 // a BadLocation error.
+//
+// (You the programmer will decide the format that the value of the ‘location’ parameter passed to
+// OpenLocation(location string) will be in.)
 //
 // If the format of the value of ‘location’ was good, but it just wasn't there, then you would
 // return a ContentNotFound error (using ErrContentNotFound()) instead.
